@@ -4,3 +4,7 @@
     width: 130px;
     height: 110px;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
