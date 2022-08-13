@@ -9,10 +9,16 @@ import { Ingredient } from '../shared/ingredient.model';
 export class ShoppingListComponent implements OnInit {
 
   ingredients: Ingredient[] = [new Ingredient('ABC', 10), new Ingredient('XYZ', 20)];
+  ingredient = [];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getIngredient(event) {
+    this.ingredient = event;
+    this.ingredients.push(new Ingredient(this.ingredient[0], this.ingredient[1]));
   }
 
 }
