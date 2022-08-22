@@ -7,11 +7,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'shopping-recipe-demo';
 
-  showPage = "recipe";
-
   constructor() {}
-
-  onSelectedPage(event) {
-    this.showPage = event;
-  }
 }
