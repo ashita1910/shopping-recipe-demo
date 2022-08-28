@@ -18,7 +18,6 @@ export class ShoppingListService {
   }
 
   getIngredient(ind: number) {
-    console.log("item: " + this.ingredients[ind].name + this.ingredients[ind].amount);
     return this.ingredients[ind];
   }
 

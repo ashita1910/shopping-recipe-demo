@@ -21,7 +21,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.shoppingListService.editShoppingList.subscribe((ind) => {
       this.editMode = true;this.editInd = ind;
-      console.log(ind + " " + this.shoppingListService.ingredients[ind].name + " " + this.shoppingListService.ingredients[ind].amount);
       this.editForm.setValue({
         name: this.shoppingListService.getIngredient(ind).name,
         amount: this.shoppingListService.getIngredient(ind).amount
