@@ -3,8 +3,8 @@
         <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-md-12">
-                    <button class="btn btn-success me-3" type="submit">Save</button>
-                    <button class="btn btn-danger" type="button">Cancel</button>
+                    <button class="btn btn-success me-3" type="submit" [disabled]="recipeForm?.invalid">Save</button>
+                    <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
                 </div>
             </div>
             <div class="row mt-3">
@@ -20,9 +20,9 @@
                         <input type="text" id="imagePath" class="form-control" formControlName="imageUrl">
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12 mt-2" *ngIf="recipeForm.controls.imageUrl.value">
                     <div class="img-responsive">
-                        <img src="">
+                        <img [src]="recipeForm.controls.imageUrl.value" height="300" width="auto">
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -36,22 +36,22 @@
                         <div class="col-md-12" [formGroupName]="i">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="{{'ingredientName' + i}}">Ingredient Name</label>
-                                    <input type="text" id="{{'ingredientName' + i}}" class="form-control" formControlName="ingredientName">
+                                    <label for="{{'name' + i}}">Ingredient Name</label>
+                                    <input type="text" id="{{'name' + i}}" class="form-control" formControlName="name">
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="{{'ingredientAmount' + i}}">Ingredient Amount</label>
-                                    <input type="number" id="{{'ingredientAmount' + i}}" class="form-control" formControlName="ingredientAmount">
+                                    <label for="{{'amount' + i}}">Ingredient Amount</label>
+                                    <input type="number" id="{{'amount' + i}}" class="form-control" formControlName="amount">
                                 </div>
                                 <div class="col-md-2 mt-2 mt-md-4">
-                                    <button class="btn btn-danger" type="button">X</button>
+                                    <button class="btn btn-danger" type="button" (click)="deleteIngredient(i)">X</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12 mt-3">
-                    <button class="btn btn-success" (click)="addIngredient()">Add Ingredient</button>
+                    <button class="btn btn-success" (click)="addIngredient()" type="button">Add Ingredient</button>
                 </div>
             </div>
         </form>
