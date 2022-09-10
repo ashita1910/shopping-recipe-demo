@@ -16,6 +16,10 @@ import { NoRecipeDetailComponent } from './recipes/no-recipe-detail/no-recipe-de
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,14 +34,18 @@ import { AuthComponent } from './auth/auth/auth.component';
     DropdownDirective,
     NoRecipeDetailComponent,
     RecipeEditComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
