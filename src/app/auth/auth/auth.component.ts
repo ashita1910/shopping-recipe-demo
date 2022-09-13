@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class AuthComponent implements OnInit {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
+  error: string;
 
   constructor(
     private auth: AuthService,
@@ -47,11 +48,16 @@ export class AuthComponent implements OnInit {
       },
       (err) => {
         this.isLoading = false;
-        this.toastr.error('An error occurred!', err, {
-          closeButton: true,
-        });
+        // this.toastr.error('An error occurred!', err, {
+        //   closeButton: true,
+        // });
+        this.error = err;
       }
     );
     authForm.reset();
+  }
+
+  closeAlert() {
+    this.error = null;
   }
 }
