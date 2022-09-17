@@ -1,3 +1,6 @@
+# Project is live at following server:
+https://shopping-recipe-book-54cde.web.app/auth
+
 # ShoppingRecipeDemo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
