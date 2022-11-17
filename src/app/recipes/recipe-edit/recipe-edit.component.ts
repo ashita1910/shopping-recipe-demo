@@ -71,6 +71,7 @@ export class RecipeEditComponent implements OnInit {
       this.recipeForm.controls.description.value,
       this.recipeForm.controls.place.value,
       this.recipeForm.controls.imageUrl.value,
+      JSON.parse(localStorage.getItem('userData'))?.id.toString(),
       this.recipeForm.controls.ingredients.value
     );
     this.editMode

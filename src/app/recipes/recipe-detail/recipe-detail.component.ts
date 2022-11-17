@@ -8,14 +8,19 @@ import { RecipeService } from '../recipe.service';
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
-
   recipeDetail: Recipe;
   id: number;
+  privilegeError: string;
 
-  constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute, private recipeService: RecipeService, private router: Router) { }
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private route: ActivatedRoute,
+    private recipeService: RecipeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -28,9 +33,23 @@ export class RecipeDetailComponent implements OnInit {
     this.shoppingListService.addToShoppingList(this.recipeDetail.ingredients);
   }
 
+  editRecipe() {
+    if (
+      this.recipeDetail?.userId ==
+      JSON.parse(localStorage.getItem('userData'))?.id
+    ) {
+      this.router.navigate(['edit'], { relativeTo: this.route });
+    } else {
+      this.privilegeError = 'You are not authorised to edit this recipe!';
+    }
+  }
+
   deleteRecipe() {
     this.recipeService.deleteRecipeFromShoppingList(this.id);
     this.router.navigate(['recipes/no-recipe']);
   }
 
+  closeAlert() {
+    this.privilegeError = null;
+  }
 }
